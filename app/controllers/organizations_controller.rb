@@ -19,10 +19,22 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def join
+  end
+
+
   def show
     @organization = Organization.find(params[:id])
+    if session.key?(:user_id)
+      @user = User.find(session[:user_id])
+    end
   end
-  
+
+  def destroy
+      organization = Organization.find(params[:id])
+      organization.delete
+      redirect_to "/organizations"
+  end     
   private
 
   def organization_params

@@ -8,7 +8,7 @@ root 'users#index'
 
   post '/users' => 'users#create' #process the new user
 
-  get '/users/logout' => 'users#logout' #logout the user
+  get '/logout' => 'users#logout' #logout the user
 
   post '/users/authenticate' => 'users#authenticate' #authenticate the login form 
 
@@ -21,8 +21,10 @@ root 'users#index'
 # *************************************************************
   get '/organizations' => 'organizations#index' #show all organizations
 
-  post '/organizations/create' #process the new organization
+  post '/organizations' => 'organizations#create' #process the new organization
 
   get '/organizations/:id' => 'organizations#show' #shows a specific event tied to ID.
+
+  delete '/organizations/:id' => 'organizations#destroy' # deletes a organization
 
 end
