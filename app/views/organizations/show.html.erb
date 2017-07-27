@@ -11,8 +11,8 @@
 <h1>Organization Name: <%= @organization.name %> <button>Join Group</button></h1> 
 <h3>Description: <%= @organization.description %> </h3>
 
-<h3> Created By: <%= @user.first_name %> <%= @user.last_name %></h3>
-<h3> Members: </h3>
+<h3> Created By: </h3><h5><%= @user.first_name %> <%= @user.last_name %></h5>
+<h3> Members:</h3> <h5><%= @user.first_name %> <%= @user.last_name %> </h5>
 <% @organization.members.each do |member| %>
   <%= organization.member.first_name %>
   <br>

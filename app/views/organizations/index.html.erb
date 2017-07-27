@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @user %>
-  <a href="/logout">logout</a>
+  <a href="/logout">Logout</a>
  <h4>Hello <%= @user.first_name %>!</h4>
 <% end %>
 
@@ -15,7 +15,7 @@
 
 <% @organizations.each do |organization|%> 
 <a href='/organizations/<%= organization.id %>'><h3> <%= organization.name %> </h3></a>
-Members: <%=%>
+Members: 1
 <br>
 Description: <%= organization.description %>
 <a href="/organizations/<%= organization.id %>" data-method="delete">Delete this Organization!</a>

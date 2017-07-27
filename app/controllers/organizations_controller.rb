@@ -20,8 +20,12 @@ class OrganizationsController < ApplicationController
   end
 
   def join
-  end
+    @organization = Organization.find(params[:id])
 
+    @join = OrganizationAdd.create(user:current_user, organization:@organization)
+
+    @organizations = Organization.all.order('created_at desc')
+  end
 
   def show
     @organization = Organization.find(params[:id])
@@ -31,14 +35,14 @@ class OrganizationsController < ApplicationController
   end
 
   def destroy
-      organization = Organization.find(params[:id])
-      organization.delete
+      @organization = Organization.find(params[:id])
+      @organization.delete if @organization.user === current_user
       redirect_to "/organizations"
   end     
   private
 
   def organization_params
-    params.require(:organization).permit(:name, :description)
+    params.require(:organization).permit(:name, :description).merge(user: current_user)
   end
 end
 
