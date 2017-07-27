@@ -42,7 +42,7 @@ class OrganizationsController < ApplicationController
   private
 
   def organization_params
-    params.require(:organization).permit(:name, :description).merge(user: current_user)
+    params.require(:organization).permit(:name, :description)
   end
 end
 

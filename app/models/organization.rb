@@ -6,10 +6,5 @@ class Organization < ApplicationRecord
   belongs_to :user, optional: true
   has_many :members
   has_many :users, through: :members
-
-    def users_that_added
-
-    User.joins(:organization_adds).select('users.id, users.first_name, users.last_name, COUNT(*) as times_added').where('organization_adds.organization_id = ?', self.id).group('users.id').order('times_added desc')
-
 end
 
