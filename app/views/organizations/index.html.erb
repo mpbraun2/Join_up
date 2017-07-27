@@ -1,0 +1,38 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p style="color:red;"><%= error %></p>
+  <% end %>
+<% end %>
+
+<% if @user %>
+  <a href="/logout">logout</a>
+ <h4>Hello <%= @user.first_name %>!</h4>
+<% end %>
+
+
+<h1> Here are the organizations you may join:</h1>
+<br>
+
+<% @organizations.each do |organization|%> 
+<a href='/organizations/<%= organization.id %>'><h3> <%= organization.name %> </h3></a>
+Members: <%=%>
+<br>
+Description: <%= organization.description %>
+
+<br>
+<% end %>
+
+<br>
+<br>
+
+
+<h3>Not finding what you are looking for? Create a new Organization!</h3>
+<br>
+<form action="/organizations/create" method="POST">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label> Org Name </label>
+        <input type="text" name="organization[name]">
+    <label> Description </label>
+        <input type="text" name="organization[description]">
+ <button type="submit"> Create </button>
+</form>
