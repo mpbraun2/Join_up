@@ -27,4 +27,6 @@ root 'users#index'
 
   delete '/organizations/:id' => 'organizations#destroy' # deletes a organization
 
+  post '/organizations/:id/join' => 'organizations#join' #join an organization
+
 end

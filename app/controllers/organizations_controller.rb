@@ -36,7 +36,7 @@ class OrganizationsController < ApplicationController
 
   def destroy
       @organization = Organization.find(params[:id])
-      @organization.delete if @organization.user === current_user
+      @organization.delete
       redirect_to "/organizations"
   end     
   private
